@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Chat With Agent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+
+<style>
+	.cx-widget {
+		font-family: lato;
+	}
+
+	.cx-widget.cx-theme-light .cx-button-minimize {
+		fill: #000000;
+		opacity: 0.0;
+		display: none;
+		visibility: hidden;
+
+	}
+
+	.cx-widget.cx-theme-light .cx-button-close {
+		
+		display: block;
+		visibility: visible;
+
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-them .cx-bubble {
+		background-color: #306AFF !important;
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-them .cx-bubble .cx-time {
+		color: #ffffff !important;
+	}
+
+
+	.cx-webchat.cx-theme-light .cx-message.cx-them .cx-bubble-arrow svg * {
+		fill: #306AFF !important;
+	}
+
+
+	
+
+	.cx-webchat .cx-transcript .cx-message.cx-them {
+		border: 0;
+		color: #fdfdfd !important;
+		padding: 6px 0;
+		text-align: left;
+	}
+
+	.cx-webchat .cx-transcript .cx-message.cx-them {
+		border: 0;
+		color: #fdfdfd !important;
+		padding: 6px 0;
+		text-align: left;
+		font-weight: 400 !important;
+		font-size: 14px !important;
+	}
+
+
+
+
+	.cx-webchat.cx-theme-light .cx-time {
+		font-style: normal !important;
+		font-weight: 600 !important;
+		font-size: 12px !important;
+
+	}
+
+
+	.cx-webchat.cx-theme-light .cx-message.cx-you .cx-bubble {
+		background-color: #DADADA !important;
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-you .cx-bubble .cx-time {
+		color: #000000 !important;
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-you .cx-bubble .cx-message-text {
+		color: #000000 !important;
+		font-weight: 400 !important;
+		font-size: 13px !important;
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-them.cx-Agent.cx-agent .cx-bubble .cx-name {
+		color: #ffffff !important;
+		font-weight: 400 !important;
+		font-size: 13px !important;
+	}
+
+	.cx-webchat.cx-theme-light .cx-message.cx-agent-typing.cx-them .cx-bubble .cx-name {
+		color: #ffffff !important;
+		font-weight: 400 !important;
+		font-size: 13px !important;
+	}
+
+
+	.cx-webchat .cx-transcript .cx-message.cx-date {
+		padding: 6px 16px !important;
+		text-align: center !important;
+		min-height: 18px !important;
+		line-height: 12px !important;
+		border: 1px solid #dae1e8 !important;
+		border-radius: 21px !important;
+		max-width: fit-content !important;
+		margin: 12px auto !important;
+		display: flex !important;
+		background: #DBDBDC !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-svg-icon-tone1 {
+		fill: #306AFF !important;
+	}
+
+
+
+
+	/* ÷ */
+
+
+	.cx-widget.cx-theme-light {
+		color: #444A52;
+		background-color: #FFFFFF;
+		scrollbar-face-color: #CCCCCC;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme {
+		background-color: #FFFFFF;
+		color: #444A52;
+		border-color: #DAE1E8 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-overlay {
+		background-color: #FFFFFF;
+	}
+
+	.cx-widget.cx-theme-light .cx-svg-icon-tone1 {
+		fill: #CBDAFF;
+	}
+
+	.cx-widget.cx-theme-light .cx-svg-icon-tone2 {
+		fill: #8C8C8C;
+	}
+
+	.cx-widget.cx-theme-light .cx-svg-icon-shadow1 {
+		fill: #000000;
+		opacity: 0.2;
+	}
+
+	.cx-widget.cx-theme-light .cx-svg-icon-shadow2 {
+		fill: #000000;
+		opacity: 0.1;
+	}
+
+	.cx-widget.cx-theme-light * {
+		border-color: #DAE1E8;
+	}
+
+	.cx-widget.cx-theme-light .cx-titlebar .cx-title {
+		color: #444A52;
+	}
+
+	.cx-widget.cx-theme-light .cx-buttons-window-control .cx-svg-icon-tone1 {
+		fill: #8795A6;
+	}
+
+	.cx-widget.cx-theme-light .cx-input-icon-overlay .cx-svg-icon-tone1 {
+		fill: #98A7B8;
+	}
+
+	.cx-widget.cx-theme-light .cx-input-group-btn .cx-svg-icon-tone1 {
+		fill: #FDFDFD;
+	}
+
+	.cx-widget.cx-theme-light label {
+		color: #444A52;
+	}
+
+	.cx-widget.cx-theme-light a {
+		color: #000000;
+	}
+
+	.cx-widget.cx-theme-light a:hover {
+		color: #000000;
+	}
+
+	.cx-widget.cx-theme-light .cx-icon-alert-circle {
+		color: #F53131;
+	}
+
+	.cx-widget.cx-theme-light .cx-footer,
+	.cx-widget.cx-theme-light .cx-branding {
+		color: #66759B;
+	}
+
+	.cx-widget.cx-theme-light .cx-footer *,
+	.cx-widget.cx-theme-light .cx-branding * {
+		fill: #66759B;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control.cx-error {
+		border-color: #F53131;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control::placeholder {
+		color: #6F7491;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control:-moz-placeholder {
+		color: #6F7491;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control::-moz-placeholder {
+		color: #6F7491;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control:-ms-input-placeholder {
+		color: #6F7491;
+	}
+
+	.cx-widget.cx-theme-light .cx-form-control::-webkit-input-placeholder {
+		color: #6F7491;
+	}
+
+	.cx-widget.cx-theme-light input:focus,
+	.cx-widget.cx-theme-light textarea:focus,
+	.cx-widget.cx-theme-light .cx-btn:focus,
+	.cx-widget.cx-theme-light .cx-button-group button:focus,
+	.cx-widget.cx-theme-light .cx-form-control:not(.cx-error):focus {
+		border-color: #5791FD !important;
+	}
+
+	.cx-widget.cx-theme-light input[type="text"],
+	.cx-widget.cx-theme-light input[type="email"],
+	.cx-widget.cx-theme-light input[type="tel"],
+	.cx-widget.cx-theme-light select,
+	.cx-widget.cx-theme-light textarea {
+		background-color: #FFFFFF;
+		color: #444A52;
+		border-color: #94948A;
+	}
+
+	.cx-widget.cx-theme-light .cx-btn-default {
+		background: none;
+		border-color: #DAE1E8 !important;
+		color: #FDFDFD;
+		background-color: #555D66;
+	}
+
+	.cx-widget.cx-theme-light .cx-btn.cx-disabled {
+		background: #CCCCCC;
+	}
+
+	.cx-widget.cx-theme-light .cx-btn-primary {
+		color: #FDFDFD;
+		border-color: #2E69DB !important;
+		background: #566DD9;
+		background: -moz-linear-gradient(top, #566DD9 0%, #4375d6 100%);
+		background: -webkit-linear-gradient(top, #566DD9 0%, #4375d6 100%);
+		background: linear-gradient(to bottom, #566DD9 0%, #4375d6 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@bg_color_4', endColorstr='@bg_color_5', GradientType=0);
+		background-color: #566DD9;
+	}
+
+	.cx-widget.cx-theme-light .cx-button-group .cx-btn-primary:focus,
+	.cx-widget.cx-theme-light .cx-btn-primary:focus,
+	.cx-widget.cx-theme-light .cx-button-group .cx-btn-default:focus,
+	.cx-widget.cx-theme-light .cx-btn-default:focus {
+		border-color: #000 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-ac-dropdown-menu {
+		background: #FFFFFF;
+		border-color: #DAE1E8 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-ac-suggestion:hover,
+	.cx-widget.cx-theme-light .cx-ac-suggestion.cx-active {
+		background-color: #5791FD;
+		color: #FDFDFD;
+	}
+
+	.cx-widget.cx-theme-light ::-webkit-scrollbar-thumb {
+		background: #939399;
+	}
+
+	.cx-widget.cx-theme-light .cx-smokescreen {
+		background-color: #FFFFFF;
+		opacity: 0.7;
+	}
+
+	.cx-widget.cx-theme-light .cx-dialog-container .cx-dialog {
+		background-color: #FFFFFF;
+		border-color: #DAE1E8 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-background {
+		background-color: #FFFFFF;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-border {
+		border: 1px solid #DAE1E8 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-text {
+		color: #444A52;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-icon-interactive1 svg .cx-svg-icon-tone1 {
+		fill: #5081E1;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-icon-positive svg .cx-svg-icon-tone1 {
+		fill: #34A84F;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-icon-negative svg .cx-svg-icon-tone1 {
+		fill: #F53131;
+	}
+
+	.cx-widget.cx-theme-light .cx-theme-icon-warning svg .cx-svg-icon-tone1 {
+		fill: #D47F2F;
+	}
+
+	.cx-widget.cx-theme-light .cx-warning {
+		color: #F53131 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-warning .cx-icon svg * {
+		fill: #F53131 !important;
+	}
+
+	.cx-widget.cx-theme-light .cx-countdown {
+		color: #444A52;
+	}
+
+	.cx-widget.cx-theme-light .cx-countdown .cx-icon svg * {
+		fill: #444A52;
+	}
+
+	.cx-widget.cx-theme-light .cx-loading-screen .cx-loading-icon svg g g,
+	.cx-widget.cx-theme-light .cx-loading-container .cx-loading-icon svg g g {
+		stroke: #2B74FF;
+	}
+
+	.cx-widget.cx-theme-light .cx-loading-screen .cx-loading-icon svg g:first-child g,
+	.cx-widget.cx-theme-light .cx-loading-container .cx-loading-icon svg g:first-child g {
+		stroke: #72799D;
+	}
+</style>
+
+
+<body>
+
+	<script type="text/javascript">
+
+
+
+
+		window._genesys = {
+			widgets: {
+				main: {
+					mobileMode: true,
+					themes: {
+						"custom1": "cx-theme-light"
+					},
+					theme: "custom1",
+
+
+
+				},
+
+				webchat: {
+					emojis: true,
+					uploadsEnabled: false,
+					confirmFormCloseEnabled: false,
+					actionsMenu: false,
+					minimizeOnMobileRestore: true,
+
+
+					chatButton: {
+
+						enabled: true,
+						template: '<div class="cx-widget cx-webchat-chat-button cx-side-button" role="button" tabindex="0" data-message="ChatButton" data-gcb-service-node="true"><span class="cx-icon" data-icon="chat"> </span><span class="i18n cx-chat-button-label" data-message="ChatButton"></span></div>',
+						effect: 'fade',
+						openDelay: 1000,
+						effectDuration: 300,
+						hideDuringInvite: true
+					},
+					transport: {
+						type: 'purecloud-v2-sockets',
+						dataURL: 'https://api.mypurecloud.de',
+						deploymentKey: '0613bf41-04ef-498e-b36c-3d7b056e7c08',
+						orgGuid: '1620616b-04f3-4ff1-b270-6a28fc6a3620',
+						interactionData: {
+							routing: {
+								targetType: 'QUEUE',
+								targetAddress: '',
+								priority: 2
+							}
+						}
+					},
+					userData: {
+						addressStreet: '64472 Brown Street',
+						addressCity: 'Lindgrenmouth',
+						addressPostalCode: '50163-2735',
+						addressState: 'FL',
+						phoneNumber: '1-916-892-2045 x293',
+						phoneType: 'Cell',
+						customerId: '59606',
+
+					}
+				}
+			}
+		};
+
+
+
+		window._genesys.widgets.main.i18n = {
+			"en": {
+				"webchat": {
+
+					"ChatTitle": "Chat With Us",
+					"AriaWindowLabel": "Chat With Us",
+					"AriaMinimize": "Chat With Us",
+					"AriaMaximize": "Chat With Us",
+					"AriaClose": "Chat With Us Close"
+				}
+			}
+		};
+
+	</script>
+
+
+
+	<script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onLoad="
+   javascript:CXBus.configure(
+    {
+      debug: true,
+        pluginsPath: 'https://apps.mypurecloud.com/widgets/9.0/plugins/'
+    }
+   );
+   CXBus.loadPlugin('widgets-core');
+   ">
+</script>
+
+	<!-- Optional: Use CXBus to create plugins, subscribe to events, or call commands -->
+	<script type="text/javascript">
+
+		function sendChatCloseCommand(){
+		}
+
+		const customPlugin = CXBus.registerPlugin('Custom');
+
+		customPlugin.subscribe('WebChatService.started', function (e) {
+			// var closeButton = document.querySelector(".cx-button-close");
+			// closeButton.setAttribute('onclick','sendChatCloseCommand()');
+			console.log('Chat started', e);
+
+			// document.querySelector(".cx-end-confirm").setAttribute('onclick','sendChatCloseCommand()');
+		});
+
+		customPlugin.subscribe('WebChatService.ended', function (e) {
+			console.log('Chat ended', e);
+		});
+	</script>
+
+
+	<!-- <div>
+		Chat example testing
+	</div> -->
+
+	<!-- 
+	<button type="button" id="chat-button-simple" onclick="customPlugin.command('WebChat.open',);">Start Chat
+		(simple)</button> -->
+
+	<script type="text/javascript">
+
+		document.addEventListener('DOMContentLoaded', function () {
+			// document.getElementById('chat-button').click();
+			// customPlugin.command('WebChat.open', getAdvancedConfig());
+
+			
+	
+
+		});
+
+		function getAdvancedConfig() {
+
+			return {
+				form: {
+					autoSubmit: false,
+					firstname: 'Iamplus App Testing',
+					lastname: 'Last',
+					email: 'praenomen.gens@calidumlitterae.com',
+					subject: 'Populated from data'
+				},
+				formJSON: {
+					wrapper: '<table></table>',
+					inputs: [
+						// Default fields
+						{
+							id: 'cx_webchat_form_firstname',
+							name: 'firstname',
+							maxlength: '100',
+							placeholder: 'Required',
+							label: 'First Name'
+						},
+						{
+							id: 'cx_webchat_form_lastname',
+							name: 'lastname',
+							maxlength: '100',
+							placeholder: 'Required',
+							label: 'Last Name'
+						},
+						{
+							id: 'cx_webchat_form_email',
+							name: 'email',
+							maxlength: '100',
+							placeholder: 'Optional',
+							label: 'Email'
+						},
+						{
+							id: 'cx_webchat_form_subject',
+							name: 'subject',
+							maxlength: '100',
+							placeholder: 'Optional',
+							label: 'Subject'
+						},
+						// Custom Fields
+						{
+							id: 'custom_field_1',
+							name: 'customField1',
+							maxlength: '100',
+							placeholder: 'Custom Data',
+							label: 'Custom Field 1',
+							value: 'My Custom Value'
+						}
+					]
+				}
+			};
+
+			
+		}
+	</script>
+
+	<button type="button" id="chat-button" onclick="customPlugin.command('WebChat.open', getAdvancedConfig());">Start
+		Chat prefilled (with data)</button>
+</body>
+
+</html>
