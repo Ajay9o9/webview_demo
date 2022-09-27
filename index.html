@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Chat With Agent</title>
+	<title>Iamplus genesys</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -457,11 +457,6 @@
 		const customPlugin = CXBus.registerPlugin('Custom');
 
 		customPlugin.subscribe('WebChatService.started', function (e) {
-			// var closeButton = document.querySelector(".cx-button-close");
-			// closeButton.setAttribute('onclick','sendChatCloseCommand()');
-			console.log('Chat started', e);
-
-			// document.querySelector(".cx-end-confirm").setAttribute('onclick','sendChatCloseCommand()');
 		});
 
 		customPlugin.subscribe('WebChatService.ended', function (e) {
@@ -470,23 +465,11 @@
 	</script>
 
 
-	<!-- <div>
-		Chat example testing
-	</div> -->
-
-	<!-- 
-	<button type="button" id="chat-button-simple" onclick="customPlugin.command('WebChat.open',);">Start Chat
-		(simple)</button> -->
-
 	<script type="text/javascript">
 
 		document.addEventListener('DOMContentLoaded', function () {
 			// document.getElementById('chat-button').click();
-			// customPlugin.command('WebChat.open', getAdvancedConfig());
-
-			
-	
-
+			customPlugin.command('WebChat.open', getAdvancedConfig());
 		});
 
 		function getAdvancedConfig() {
